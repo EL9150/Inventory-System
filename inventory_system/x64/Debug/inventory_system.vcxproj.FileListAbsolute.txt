@@ -1,2 +1,0 @@
-C:\Users\DELL\source\repos\inventory_system\inventory_system\x64\Debug\inventory_system.vcxproj.AssemblyReference.cache
-C:\Users\DELL\source\repos\inventory_system\inventory_system\x64\Debug\inventory_system.vcxproj.SuggestedBindingRedirects.cache
