@@ -8,12 +8,30 @@ namespace inventorysystem {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+		MySqlConnection^ sqlConn = gcnew MySqlConnection();
+		MySqlCommand^ sqlCmd = gcnew MySqlCommand();
+		DataTable^ sqlDTable = gcnew DataTable();
+		MySqlDataAdapter^ sqlDAdapt = gcnew MySqlDataAdapter();
+		MySqlDataReader^ sqlDRead;
+		DataSet^ DS = gcnew DataSet();
+
+		String^ sqlQuery;
+
+		String^ server = "localhost";
+		String^ username = "root";
+		String^ password = "135791357";
+		String^ database = "inventorydb";
+
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+		   
+
 	public:
 		MyForm(void)
 		{
@@ -182,6 +200,7 @@ namespace inventorysystem {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->POwner->SuspendLayout();
@@ -191,6 +210,8 @@ namespace inventorysystem {
 			this->panel3->SuspendLayout();
 			this->PProduct->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numud1))->BeginInit();
+			this->tabPage2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -719,6 +740,7 @@ namespace inventorysystem {
 			// 
 			// tabPage2
 			// 
+			this->tabPage2->Controls->Add(this->dataGridView1);
 			this->tabPage2->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
@@ -728,6 +750,17 @@ namespace inventorysystem {
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Inventory";
 			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(19, 20);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 27;
+			this->dataGridView1->Size = System::Drawing::Size(1305, 660);
+			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
 			// MyForm
 			// 
@@ -751,10 +784,26 @@ namespace inventorysystem {
 			this->PProduct->ResumeLayout(false);
 			this->PProduct->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numud1))->EndInit();
+			this->tabPage2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+
+		private: System::Void ItemUpload() {
+			sqlConn->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" +
+				password + ";" + "database=" + database; //specify property settings
+			sqlConn->Open(); // open the database connection
+			sqlCmd->Connection = sqlConn;
+			sqlCmd->CommandText = "select * from inventorydb";
+			sqlDRead = sqlCmd->ExecuteReader(); //build the data reader object
+			sqlDTable->Load(sqlDRead); // fill the datatable using the data reader
+			sqlDRead->Close(); // close the data reader
+			sqlConn->Close(); // close the connection
+			dataGridView1->DataSource = sqlDTable;
+		}
+
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -783,5 +832,7 @@ namespace inventorysystem {
 	}
 	private: System::Void txtPName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
 };
 }
