@@ -3,6 +3,7 @@
 namespace inventorysystem {
 
 	using namespace System;
+	using namespace System::IO;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
@@ -10,6 +11,7 @@ namespace inventorysystem {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
+	
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
@@ -24,10 +26,58 @@ namespace inventorysystem {
 
 		String^ sqlQuery;
 
-		String^ server = "localhost";
-		String^ username = "root";
-		String^ password = "135791357";
-		String^ database = "inventorydb";
+	private:
+		ref class DatabaseCredentials
+		{
+		public:
+			property String^ Server;
+			property String^ Username;
+			property String^ Password;
+			property String^ Database;
+		};
+
+		DatabaseCredentials^ credentials;
+
+		// Method to read MySQL credentials from config.ini
+		void readConfig() {
+			String^ configFileName = "config.ini";
+			if (!File::Exists(configFileName)) {
+				MessageBox::Show("Error: Config file not found!");
+				return;
+			}
+
+			credentials = gcnew DatabaseCredentials();
+
+			try {
+				FileStream^ configFile = File::OpenRead(configFileName);
+				StreamReader^ reader = gcnew StreamReader(configFile);
+
+				String^ line;
+				while ((line = reader->ReadLine()) != nullptr) {
+					array<Char>^ delimiterChars = { '=' };
+					array<String^>^ keyValuePair = line->Split(delimiterChars, StringSplitOptions::None);
+					if (keyValuePair->Length == 2) {
+						String^ key = keyValuePair[0]->Trim();
+						String^ value = keyValuePair[1]->Trim();
+						if (key == "server")
+							credentials->Server = value;
+						else if (key == "username")
+							credentials->Username = value;
+						else if (key == "password")
+							credentials->Password = value;
+						else if (key == "database")
+							credentials->Database = value;
+					}
+				}
+
+				reader->Close();
+				configFile->Close();
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error: " + ex->Message);
+			}
+		}
+
 
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 		   
@@ -414,7 +464,6 @@ namespace inventorysystem {
 			this->txtComment->Name = L"txtComment";
 			this->txtComment->Size = System::Drawing::Size(359, 165);
 			this->txtComment->TabIndex = 18;
-			this->txtComment->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// label14
 			// 
@@ -452,7 +501,6 @@ namespace inventorysystem {
 			this->calendar->Location = System::Drawing::Point(22, 13);
 			this->calendar->Name = L"calendar";
 			this->calendar->TabIndex = 0;
-			this->calendar->DateChanged += gcnew System::Windows::Forms::DateRangeEventHandler(this, &MyForm::monthCalendar1_DateChanged);
 			// 
 			// PDate
 			// 
@@ -476,7 +524,6 @@ namespace inventorysystem {
 			this->label8->Size = System::Drawing::Size(71, 37);
 			this->label8->TabIndex = 15;
 			this->label8->Text = L"Date";
-			this->label8->Click += gcnew System::EventHandler(this, &MyForm::label8_Click_1);
 			// 
 			// label9
 			// 
@@ -498,7 +545,6 @@ namespace inventorysystem {
 			this->txtDate->Name = L"txtDate";
 			this->txtDate->Size = System::Drawing::Size(324, 52);
 			this->txtDate->TabIndex = 14;
-			this->txtDate->TextChanged += gcnew System::EventHandler(this, &MyForm::txtDate_TextChanged);
 			// 
 			// panel3
 			// 
@@ -520,7 +566,6 @@ namespace inventorysystem {
 			this->btExit->TabIndex = 22;
 			this->btExit->Text = L"Exit";
 			this->btExit->UseVisualStyleBackColor = true;
-			this->btExit->Click += gcnew System::EventHandler(this, &MyForm::btExit_Click);
 			// 
 			// btReset
 			// 
@@ -530,7 +575,7 @@ namespace inventorysystem {
 			this->btReset->TabIndex = 1;
 			this->btReset->Text = L"Reset";
 			this->btReset->UseVisualStyleBackColor = true;
-			this->btReset->Click += gcnew System::EventHandler(this, &MyForm::btReset_Click);
+
 			// 
 			// btAdd
 			// 
@@ -584,7 +629,6 @@ namespace inventorysystem {
 			this->txtCent->TabIndex = 12;
 			this->txtCent->Text = L"0";
 			this->txtCent->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->txtCent->TextChanged += gcnew System::EventHandler(this, &MyForm::txtCent_TextChanged);
 			// 
 			// label10
 			// 
@@ -634,7 +678,6 @@ namespace inventorysystem {
 			this->cboCurrency->Size = System::Drawing::Size(105, 50);
 			this->cboCurrency->TabIndex = 10;
 			this->cboCurrency->Text = L"USD";
-			this->cboCurrency->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::cboCurrency_SelectedIndexChanged);
 			// 
 			// label6
 			// 
@@ -646,7 +689,6 @@ namespace inventorysystem {
 			this->label6->Size = System::Drawing::Size(129, 37);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"Unit Price";
-			this->label6->Click += gcnew System::EventHandler(this, &MyForm::label6_Click);
 			// 
 			// label5
 			// 
@@ -681,7 +723,6 @@ namespace inventorysystem {
 			this->txtDollar->TabIndex = 6;
 			this->txtDollar->Text = L"0";
 			this->txtDollar->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->txtDollar->TextChanged += gcnew System::EventHandler(this, &MyForm::txtDollar_TextChanged);
 			// 
 			// txtID
 			// 
@@ -700,7 +741,6 @@ namespace inventorysystem {
 			this->txtPName->Name = L"txtPName";
 			this->txtPName->Size = System::Drawing::Size(324, 52);
 			this->txtPName->TabIndex = 4;
-			this->txtPName->TextChanged += gcnew System::EventHandler(this, &MyForm::txtPName_TextChanged);
 			// 
 			// label3
 			// 
@@ -760,7 +800,6 @@ namespace inventorysystem {
 			this->dataGridView1->RowTemplate->Height = 27;
 			this->dataGridView1->Size = System::Drawing::Size(1305, 660);
 			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
 			// 
 			// MyForm
 			// 
@@ -792,6 +831,13 @@ namespace inventorysystem {
 #pragma endregion
 
 		private: System::Void ItemUpload() {
+			readConfig(); // read mysql credentials
+			// Use the credentials here or assign them to other class members as needed
+			String^ server = credentials->Server;
+			String^ username = credentials->Username;
+			String^ password = credentials->Password;
+			String^ database = credentials->Database;
+
 			sqlConn->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" +
 				password + ";" + "database=" + database; //specify property settings
 			sqlConn->Open(); // open the database connection
@@ -805,34 +851,7 @@ namespace inventorysystem {
 		}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ItemUpload();
 	}
-	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
-
-	private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label8_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void cboCurrency_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void txtDate_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btReset_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void txtDollar_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void txtCent_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void monthCalendar1_DateChanged(System::Object^ sender, System::Windows::Forms::DateRangeEventArgs^ e) {
-	}
-	private: System::Void txtPName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
 };
 }
