@@ -50,4 +50,5 @@ ipch/
 *.vsp
 *.vspx
 .vs/
+*.ini
 
