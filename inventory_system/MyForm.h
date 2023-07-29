@@ -271,7 +271,7 @@ namespace inventorysystem {
 			this->tabControl1->Location = System::Drawing::Point(12, 3);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(1349, 726);
+			this->tabControl1->Size = System::Drawing::Size(1900, 726);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -288,7 +288,7 @@ namespace inventorysystem {
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1341, 697);
+			this->tabPage1->Size = System::Drawing::Size(1442, 697);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Store Items";
 			// 
@@ -305,7 +305,7 @@ namespace inventorysystem {
 			this->POwner->Controls->Add(this->label18);
 			this->POwner->Controls->Add(this->label19);
 			this->POwner->Controls->Add(this->txtOwner);
-			this->POwner->Location = System::Drawing::Point(682, 338);
+			this->POwner->Location = System::Drawing::Point(735, 334);
 			this->POwner->Name = L"POwner";
 			this->POwner->Size = System::Drawing::Size(639, 227);
 			this->POwner->TabIndex = 21;
@@ -416,7 +416,7 @@ namespace inventorysystem {
 			this->PProduct2->Controls->Add(this->txtComment);
 			this->PProduct2->Controls->Add(this->label14);
 			this->PProduct2->Controls->Add(this->txtDescription);
-			this->PProduct2->Location = System::Drawing::Point(682, 42);
+			this->PProduct2->Location = System::Drawing::Point(735, 38);
 			this->PProduct2->Name = L"PProduct2";
 			this->PProduct2->Size = System::Drawing::Size(639, 281);
 			this->PProduct2->TabIndex = 0;
@@ -491,7 +491,7 @@ namespace inventorysystem {
 			this->PCalendar->BackColor = System::Drawing::Color::Linen;
 			this->PCalendar->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->PCalendar->Controls->Add(this->calendar);
-			this->PCalendar->Location = System::Drawing::Point(168, 338);
+			this->PCalendar->Location = System::Drawing::Point(221, 334);
 			this->PCalendar->Name = L"PCalendar";
 			this->PCalendar->Size = System::Drawing::Size(346, 227);
 			this->PCalendar->TabIndex = 0;
@@ -509,7 +509,7 @@ namespace inventorysystem {
 			this->PDate->Controls->Add(this->label8);
 			this->PDate->Controls->Add(this->label9);
 			this->PDate->Controls->Add(this->txtDate);
-			this->PDate->Location = System::Drawing::Point(18, 585);
+			this->PDate->Location = System::Drawing::Point(71, 581);
 			this->PDate->Name = L"PDate";
 			this->PDate->Size = System::Drawing::Size(639, 69);
 			this->PDate->TabIndex = 0;
@@ -553,7 +553,7 @@ namespace inventorysystem {
 			this->panel3->Controls->Add(this->btExit);
 			this->panel3->Controls->Add(this->btReset);
 			this->panel3->Controls->Add(this->btAdd);
-			this->panel3->Location = System::Drawing::Point(682, 585);
+			this->panel3->Location = System::Drawing::Point(735, 581);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(639, 69);
 			this->panel3->TabIndex = 0;
@@ -575,7 +575,6 @@ namespace inventorysystem {
 			this->btReset->TabIndex = 1;
 			this->btReset->Text = L"Reset";
 			this->btReset->UseVisualStyleBackColor = true;
-
 			// 
 			// btAdd
 			// 
@@ -585,6 +584,7 @@ namespace inventorysystem {
 			this->btAdd->TabIndex = 0;
 			this->btAdd->Text = L"Add";
 			this->btAdd->UseVisualStyleBackColor = true;
+			this->btAdd->Click += gcnew System::EventHandler(this, &MyForm::btAdd_Click);
 			// 
 			// PProduct
 			// 
@@ -605,7 +605,7 @@ namespace inventorysystem {
 			this->PProduct->Controls->Add(this->label3);
 			this->PProduct->Controls->Add(this->label2);
 			this->PProduct->Controls->Add(this->label1);
-			this->PProduct->Location = System::Drawing::Point(18, 42);
+			this->PProduct->Location = System::Drawing::Point(71, 38);
 			this->PProduct->Name = L"PProduct";
 			this->PProduct->Size = System::Drawing::Size(639, 281);
 			this->PProduct->TabIndex = 0;
@@ -786,7 +786,7 @@ namespace inventorysystem {
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(1341, 697);
+			this->tabPage2->Size = System::Drawing::Size(1442, 697);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Inventory";
 			this->tabPage2->UseVisualStyleBackColor = true;
@@ -794,18 +794,18 @@ namespace inventorysystem {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(19, 20);
+			this->dataGridView1->Location = System::Drawing::Point(6, 6);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 27;
-			this->dataGridView1->Size = System::Drawing::Size(1305, 660);
+			this->dataGridView1->Size = System::Drawing::Size(1730, 688);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1368, 741);
+			this->ClientSize = System::Drawing::Size(1924, 741);
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
@@ -853,5 +853,43 @@ namespace inventorysystem {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ItemUpload();
 	}
+
+private: System::Void btAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+	readConfig(); // read mysql credentials
+	// Use the credentials here or assign them to other class members as needed
+	String^ server = credentials->Server;
+	String^ username = credentials->Username;
+	String^ password = credentials->Password;
+	String^ database = credentials->Database;
+
+	sqlConn->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" +
+		password + ";" + "database=" + database;
+	
+	try 
+	{
+		sqlConn->Open();
+		sqlQuery = "insert into inventorydb(ProductID, ProductName, NumberOfItems, CurrencyType, UnitPriceDollar," +
+			" UnitPriceCent, ItemOwner, Mobile, Email," + " ItemDescription, Comment, Date)" +
+			"values('" + txtID->Text + "','" + txtPName->Text + "','" + numud1->Text + "','" + cboCurrency->Text + "','" +
+			txtDollar->Text + "','" + txtCent->Text + "','" + txtOwner->Text + "','" + txtMobile->Text + "','" + txtEmail->Text + "','" +
+			txtDescription->Text + "','" + txtComment->Text + "','" + txtDate->Text + "')";
+
+		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
+		sqlDRead = sqlCmd->ExecuteReader();
+		sqlConn->Close();
+	}
+	catch (Exception^ expt)
+	{
+		MessageBox::Show(expt->Message);
+	}
+	finally
+	{
+		sqlConn->Close();
+	}
+	MessageBox::Show("Inventory System Updated");
+	ItemUpload();
+}
+
+
 };
 }
