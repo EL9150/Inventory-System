@@ -288,7 +288,7 @@ namespace inventorysystem {
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1442, 697);
+			this->tabPage1->Size = System::Drawing::Size(1892, 697);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Store Items";
 			// 
@@ -566,6 +566,7 @@ namespace inventorysystem {
 			this->btExit->TabIndex = 22;
 			this->btExit->Text = L"Exit";
 			this->btExit->UseVisualStyleBackColor = true;
+			this->btExit->Click += gcnew System::EventHandler(this, &MyForm::btExit_Click);
 			// 
 			// btReset
 			// 
@@ -786,7 +787,7 @@ namespace inventorysystem {
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(1442, 697);
+			this->tabPage2->Size = System::Drawing::Size(1892, 697);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Inventory";
 			this->tabPage2->UseVisualStyleBackColor = true;
@@ -854,7 +855,7 @@ namespace inventorysystem {
 		ItemUpload();
 	}
 
-private: System::Void btAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btAdd_Click(System::Object^ sender, System::EventArgs^ e) { // the add button
 	readConfig(); // read mysql credentials
 	// Use the credentials here or assign them to other class members as needed
 	String^ server = credentials->Server;
@@ -890,6 +891,16 @@ private: System::Void btAdd_Click(System::Object^ sender, System::EventArgs^ e) 
 	ItemUpload();
 }
 
+
+private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e) { // the exit button
+	System::Windows::Forms::DialogResult want_to_exit;
+	want_to_exit = MessageBox::Show("Click on yes if you want to exit", "Inventory Management System", MessageBoxButtons::YesNo,
+		MessageBoxIcon::Question); 
+
+	if (want_to_exit == System::Windows::Forms::DialogResult::Yes) { // user wants to exit the program
+		Application::Exit();
+	}
+}
 
 };
 }
