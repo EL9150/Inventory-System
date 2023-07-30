@@ -670,15 +670,15 @@ namespace inventorysystem {
 			this->cboCurrency->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cboCurrency->FormattingEnabled = true;
-			this->cboCurrency->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
-				L"USD", L"EUR", L"CNY", L"JPY", L"AUD", L"GBP",
-					L"CAD", L"HKD"
+			this->cboCurrency->Items->AddRange(gcnew cli::array< System::Object^  >(9) {
+				L"", L"USD", L"EUR", L"CNY", L"JPY", L"AUD",
+					L"GBP", L"CAD", L"HKD"
 			});
 			this->cboCurrency->Location = System::Drawing::Point(299, 141);
 			this->cboCurrency->Name = L"cboCurrency";
 			this->cboCurrency->Size = System::Drawing::Size(105, 50);
 			this->cboCurrency->TabIndex = 10;
-			this->cboCurrency->Text = L"USD";
+			this->cboCurrency->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::cboCurrency_SelectedIndexChanged);
 			// 
 			// label6
 			// 
@@ -899,6 +899,23 @@ private: System::Void btExit_Click(System::Object^ sender, System::EventArgs^ e)
 
 	if (want_to_exit == System::Windows::Forms::DialogResult::Yes) { // user wants to exit the program
 		Application::Exit();
+	}
+}
+
+private: System::Void cboCurrency_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) { // currency type combobox
+	// user can only enter unit price after selecting a currency type
+	if (cboCurrency->Text == "") { //currency type not selected
+		txtDollar->Text = "0";
+		txtDollar->Enabled = false;
+		txtCent->Text = "0";
+		txtCent->Enabled = false;
+	}
+	else { // a currency type has been selected by the user, the user can now enter the unit price of the item
+		txtDollar->Enabled = true;
+		txtDollar->Text = "";
+		txtCent->Enabled = true;
+		txtCent->Text = "";
+		txtDollar->Focus(); // set input focus to unit_price_dollar txt box
 	}
 }
 
