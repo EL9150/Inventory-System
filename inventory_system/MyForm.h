@@ -312,11 +312,11 @@ namespace inventorysystem {
 			// 
 			// txtEmail
 			// 
-			this->txtEmail->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtEmail->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtEmail->Location = System::Drawing::Point(259, 140);
 			this->txtEmail->Name = L"txtEmail";
-			this->txtEmail->Size = System::Drawing::Size(359, 52);
+			this->txtEmail->Size = System::Drawing::Size(359, 51);
 			this->txtEmail->TabIndex = 24;
 			// 
 			// label20
@@ -344,11 +344,11 @@ namespace inventorysystem {
 			// 
 			// txtMobile
 			// 
-			this->txtMobile->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtMobile->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtMobile->Location = System::Drawing::Point(259, 75);
 			this->txtMobile->Name = L"txtMobile";
-			this->txtMobile->Size = System::Drawing::Size(359, 52);
+			this->txtMobile->Size = System::Drawing::Size(359, 51);
 			this->txtMobile->TabIndex = 21;
 			// 
 			// label16
@@ -399,11 +399,11 @@ namespace inventorysystem {
 			// 
 			// txtOwner
 			// 
-			this->txtOwner->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtOwner->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtOwner->Location = System::Drawing::Point(259, 10);
 			this->txtOwner->Name = L"txtOwner";
-			this->txtOwner->Size = System::Drawing::Size(359, 52);
+			this->txtOwner->Size = System::Drawing::Size(359, 51);
 			this->txtOwner->TabIndex = 17;
 			// 
 			// PProduct2
@@ -457,7 +457,7 @@ namespace inventorysystem {
 			// 
 			// txtComment
 			// 
-			this->txtComment->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtComment->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtComment->Location = System::Drawing::Point(259, 89);
 			this->txtComment->Multiline = true;
@@ -511,7 +511,7 @@ namespace inventorysystem {
 			this->PDate->Controls->Add(this->txtDate);
 			this->PDate->Location = System::Drawing::Point(71, 581);
 			this->PDate->Name = L"PDate";
-			this->PDate->Size = System::Drawing::Size(639, 69);
+			this->PDate->Size = System::Drawing::Size(639, 75);
 			this->PDate->TabIndex = 0;
 			// 
 			// label8
@@ -539,11 +539,11 @@ namespace inventorysystem {
 			// 
 			// txtDate
 			// 
-			this->txtDate->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtDate->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtDate->Location = System::Drawing::Point(299, 9);
+			this->txtDate->Location = System::Drawing::Point(299, 10);
 			this->txtDate->Name = L"txtDate";
-			this->txtDate->Size = System::Drawing::Size(324, 52);
+			this->txtDate->Size = System::Drawing::Size(324, 51);
 			this->txtDate->TabIndex = 14;
 			// 
 			// panel3
@@ -576,6 +576,7 @@ namespace inventorysystem {
 			this->btReset->TabIndex = 1;
 			this->btReset->Text = L"Reset";
 			this->btReset->UseVisualStyleBackColor = true;
+			this->btReset->Click += gcnew System::EventHandler(this, &MyForm::btReset_Click);
 			// 
 			// btAdd
 			// 
@@ -727,20 +728,20 @@ namespace inventorysystem {
 			// 
 			// txtID
 			// 
-			this->txtID->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtID->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtID->Location = System::Drawing::Point(299, 74);
 			this->txtID->Name = L"txtID";
-			this->txtID->Size = System::Drawing::Size(324, 52);
+			this->txtID->Size = System::Drawing::Size(324, 51);
 			this->txtID->TabIndex = 5;
 			// 
 			// txtPName
 			// 
-			this->txtPName->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtPName->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPName->Location = System::Drawing::Point(299, 10);
 			this->txtPName->Name = L"txtPName";
-			this->txtPName->Size = System::Drawing::Size(324, 52);
+			this->txtPName->Size = System::Drawing::Size(324, 51);
 			this->txtPName->TabIndex = 4;
 			// 
 			// label3
@@ -918,6 +919,29 @@ private: System::Void cboCurrency_SelectedIndexChanged(System::Object^ sender, S
 		txtDollar->Focus(); // set input focus to unit_price_dollar txt box
 	}
 }
+
+private: System::Void btReset_Click(System::Object^ sender, System::EventArgs^ e) { // the reset button
+	// clicking on this button will reset everything to the default state
+	System::Windows::Forms::DialogResult want_to_reset;
+	want_to_reset = MessageBox::Show("Click on yes if you want to reset", "Inventory Management System", MessageBoxButtons::YesNo,
+		MessageBoxIcon::Question);
+
+	if (want_to_reset == System::Windows::Forms::DialogResult::Yes) { // user wants to reset
+		txtPName->Text = "";
+		txtID->Text = "";
+		txtDate->Text = "";
+		txtDescription->Text = "";
+		txtComment->Text = "";
+		txtOwner->Text = "";
+		txtMobile->Text = "";
+		txtEmail->Text = "";
+
+		cboCurrency->Text = "";
+
+		numud1->Text = "0";
+	}
+}
+
 
 };
 }
