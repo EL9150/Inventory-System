@@ -212,6 +212,9 @@ namespace inventorysystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -282,7 +285,7 @@ namespace inventorysystem {
 			this->tabControl1->Location = System::Drawing::Point(12, 3);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(1900, 726);
+			this->tabControl1->Size = System::Drawing::Size(2020, 726);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -300,7 +303,7 @@ namespace inventorysystem {
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1892, 697);
+			this->tabPage1->Size = System::Drawing::Size(2012, 697);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Store Items";
 			// 
@@ -820,19 +823,42 @@ namespace inventorysystem {
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(1892, 697);
+			this->tabPage2->Size = System::Drawing::Size(2012, 697);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Inventory";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// dataGridView1
 			// 
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"PMingLiU", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			dataGridViewCellStyle1->NullValue = nullptr;
+			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Segoe UI Emoji", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"PMingLiU", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView1->Location = System::Drawing::Point(6, 6);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 27;
-			this->dataGridView1->Size = System::Drawing::Size(1730, 688);
+			this->dataGridView1->Size = System::Drawing::Size(2000, 688);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// MyForm
