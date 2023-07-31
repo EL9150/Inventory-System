@@ -51,13 +51,13 @@ Database=inventorydb
 5. Save the "config.ini" file.
 
 # Running the Application
-1. Open Visual Studio 2023.
+1. Open Visual Studio 2022.
 
 2. Navigate to the root directory of the cloned project and open "MyForm.h" to access the Windows Forms GUI.
 
 3. Before running the application, build the project to ensure there are no errors.
 
-4. Once the build is successful, run the application using Visual Studio 2023.
+4. Once the build is successful, run the application using Visual Studio 2022.
 
 5. The Inventory Management System GUI will appear, allowing you to manage your inventory with ease.
 
