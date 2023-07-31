@@ -1,6 +1,8 @@
 # Inventory Management System - C++/CLI with Visual Studio 2022 and MySQL Workbench
 
 ## An inventory management system.
+![GUI](GUI.png)
+![DataTable](datatable.png)
 
 &nbsp;
 
@@ -23,13 +25,13 @@ Before running the Inventory Management System, make sure you have the following
 # Setting Up MySQL Database
 1. After installing MySQL Server and MySQL Workbench, launch MySQL Workbench.
 
-2. Connect to your local MySQL server instance using your username and password.
+2. Connect to your local MySQL server instance using your username and password. Make sure to remember your MySQL username and password, as they will be used in the configuration file
 
-3. Create a new database named "inventorydb".
+3. Create a new schema named "inventorydb".
 
-4. Create a table named "inventorydb" to store inventory data. The table should have fields listed in the picture below.
-
-5. Make sure to remember your MySQL username and password, as they will be used in the configuration file.
+4. Create a data table named "inventorydb" to store inventory data. The table should have column headers listed in the images below.
+![Column headers Image 1](columnheader1.png)
+![Column headers Image 2](columnheader2.png)
 
 # Configuration
 1. Clone this repository to your local machine.
