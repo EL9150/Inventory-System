@@ -25,6 +25,14 @@ namespace inventorysystem {
 		DataSet^ DS = gcnew DataSet();
 
 		String^ sqlQuery;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Button^ btDate;
+
+
+
+
+
+
 
 	private:
 		ref class DatabaseCredentials
@@ -206,6 +214,8 @@ namespace inventorysystem {
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->btDate = (gcnew System::Windows::Forms::Button());
 			this->POwner = (gcnew System::Windows::Forms::Panel());
 			this->txtEmail = (gcnew System::Windows::Forms::TextBox());
 			this->label20 = (gcnew System::Windows::Forms::Label());
@@ -253,6 +263,7 @@ namespace inventorysystem {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
+			this->panel1->SuspendLayout();
 			this->POwner->SuspendLayout();
 			this->PProduct2->SuspendLayout();
 			this->PCalendar->SuspendLayout();
@@ -277,6 +288,7 @@ namespace inventorysystem {
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::Color::Bisque;
+			this->tabPage1->Controls->Add(this->panel1);
 			this->tabPage1->Controls->Add(this->POwner);
 			this->tabPage1->Controls->Add(this->PProduct2);
 			this->tabPage1->Controls->Add(this->PCalendar);
@@ -291,6 +303,26 @@ namespace inventorysystem {
 			this->tabPage1->Size = System::Drawing::Size(1892, 697);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Store Items";
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::Linen;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->btDate);
+			this->panel1->Location = System::Drawing::Point(477, 492);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(233, 69);
+			this->panel1->TabIndex = 23;
+			// 
+			// btDate
+			// 
+			this->btDate->Location = System::Drawing::Point(6, 11);
+			this->btDate->Name = L"btDate";
+			this->btDate->Size = System::Drawing::Size(222, 48);
+			this->btDate->TabIndex = 0;
+			this->btDate->Text = L"Add Date";
+			this->btDate->UseVisualStyleBackColor = true;
+			this->btDate->Click += gcnew System::EventHandler(this, &MyForm::btDate_Click);
 			// 
 			// POwner
 			// 
@@ -479,11 +511,11 @@ namespace inventorysystem {
 			// 
 			// txtDescription
 			// 
-			this->txtDescription->Font = (gcnew System::Drawing::Font(L"Sans Serif Collection", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->txtDescription->Font = (gcnew System::Drawing::Font(L"Myanmar Text", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtDescription->Location = System::Drawing::Point(259, 10);
 			this->txtDescription->Name = L"txtDescription";
-			this->txtDescription->Size = System::Drawing::Size(359, 52);
+			this->txtDescription->Size = System::Drawing::Size(359, 51);
 			this->txtDescription->TabIndex = 17;
 			// 
 			// PCalendar
@@ -491,9 +523,9 @@ namespace inventorysystem {
 			this->PCalendar->BackColor = System::Drawing::Color::Linen;
 			this->PCalendar->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->PCalendar->Controls->Add(this->calendar);
-			this->PCalendar->Location = System::Drawing::Point(221, 334);
+			this->PCalendar->Location = System::Drawing::Point(71, 334);
 			this->PCalendar->Name = L"PCalendar";
-			this->PCalendar->Size = System::Drawing::Size(346, 227);
+			this->PCalendar->Size = System::Drawing::Size(348, 227);
 			this->PCalendar->TabIndex = 0;
 			// 
 			// calendar
@@ -814,6 +846,7 @@ namespace inventorysystem {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
 			this->POwner->ResumeLayout(false);
 			this->POwner->PerformLayout();
 			this->PProduct2->ResumeLayout(false);
@@ -941,7 +974,9 @@ private: System::Void btReset_Click(System::Object^ sender, System::EventArgs^ e
 		numud1->Text = "0";
 	}
 }
-
-
+private: System::Void btDate_Click(System::Object^ sender, System::EventArgs^ e) { // click on this button will add the selected date from
+	// the calendar to the date textbox
+	txtDate->Text = calendar->SelectionStart.ToLongDateString();
+}
 };
 }
