@@ -1,6 +1,6 @@
 # Inventory Management System - C++/CLI with Visual Studio 2022 and MySQL Workbench
 
-## An inventory management system.
+## A Windows application for inventory management.
 ![GUI](GUI.png)
 ![DataTable](datatable.png)
 
@@ -12,20 +12,18 @@ Welcome to the Inventory Management System, a C++/CLI project developed in Visua
 # Prerequisites
 Before running the Inventory Management System, make sure you have the following components installed on your system:
 
-1. [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/).
+1. [MySQL Installer](https://dev.mysql.com/downloads/installer/).
 
-2. [MySQL Installer](https://dev.mysql.com/downloads/installer/).
+2. MySQL Server: Installed via MySQL Installer.
 
-3. MySQL Server: Installed via MySQL Installer.
+3. MySQL Workbench: Installed via MySQL Installer.
 
-4. MySQL Workbench: Installed via MySQL Installer.
-
-5. Connector/NET: Installed via MySQL Installer.
+4. Connector/NET: Installed via MySQL Installer.
 
 # Setting Up MySQL Database
 1. After installing MySQL Server and MySQL Workbench, launch MySQL Workbench.
 
-2. Connect to your local MySQL server instance using your username and password. Make sure to remember your MySQL username and password, as they will be used in the configuration file
+2. Connect to your local MySQL server instance using your username and password. Make sure to remember your MySQL username and password, as they will be used in the configuration file.
 
 3. Create a new schema named "inventorydb".
 
@@ -33,10 +31,10 @@ Before running the Inventory Management System, make sure you have the following
 ![Column headers Image 1](columnheader1.png)
 ![Column headers Image 2](columnheader2.png)
 
-# Configuration
+# Configuration File
 1. Clone this repository to your local machine.
 
-2. Create a new file named "config.ini" in the root directory of the project.
+2. Create a new file named "config.ini" in the "inventory_system" directory (the folder that contains "MyForm.h") of the project.
 
 3. Open "config.ini" with a text editor and add the following content:
 ```
@@ -51,15 +49,12 @@ Database=inventorydb
 5. Save the "config.ini" file.
 
 # Running the Application
-1. Open Visual Studio 2022.
 
-2. Navigate to the root directory of the cloned project and open "MyForm.h" to access the Windows Forms GUI.
+1. Navigate to the "inventory_system" directory (the folder that contains "MyForm.h").
 
-3. Before running the application, build the project to ensure there are no errors.
+2. Click on "inventory_system.exe".
 
-4. Once the build is successful, run the application using Visual Studio 2022.
-
-5. The Inventory Management System GUI will appear, allowing you to manage your inventory with ease.
+3. The Inventory Management System GUI will appear, allowing you to manage your inventory with ease.
 
 # Contributions
 Contributions to this project are welcome! If you have any improvements or bug fixes, feel free to submit a pull request.
